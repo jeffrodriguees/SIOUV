@@ -15,7 +15,7 @@ import Atributos.EOcorrencia;
 
 /**
  *
- * @author D'Artagnan
+ * @author jefersonrodrigues
  */
 public class NOcorrencias {
 
