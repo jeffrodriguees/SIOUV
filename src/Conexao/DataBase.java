@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author D'Artagnan
+ * @author jefersonrodrigues
  */
 public class DataBase {
     
