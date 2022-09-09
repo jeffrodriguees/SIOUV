@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="impressao" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cec17bec-ab0a-4b25-b71f-8db4ab754b30">
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     *,
+     ocorrencia."registro" AS ocorrencia_registro,
+     ocorrencia."paciente" AS ocorrencia_paciente,
+     ocorrencia."tipo_ocorrencia" AS ocorrencia_tipo_ocorrencia,
+     ocorrencia."data" AS ocorrencia_data,
+     ocorrencia."id" AS ocorrencia_id,
+     ocorrencia."data_conclusao" AS ocorrencia_data_conclusao,
+     ocorrencia."celular" AS ocorrencia_celular,
+     ocorrencia."fixo" AS ocorrencia_fixo,
+     ocorrencia."comunicante" AS ocorrencia_comunicante,
+     ocorrencia."email" AS ocorrencia_email,
+     ocorrencia."relato" AS ocorrencia_relato,
+     ocorrencia."comentario" AS ocorrencia_comentario,
+     ocorrencia."providencia" AS ocorrencia_providencia,
+     ocorrencia."status" AS ocorrencia_status,
+     ocorrencia."destinatario" AS ocorrencia_destinatario,
+     ocorrencia."categoria" AS ocorrencia_categoria
+FROM
+     "ocorrencia" ocorrencia
+]]>
+	</queryString>
+	<field name="registro" class="java.lang.String"/>
+	<field name="paciente" class="java.lang.String"/>
+	<field name="tipo_ocorrencia" class="java.lang.String"/>
+	<field name="data" class="java.sql.Timestamp"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="data_conclusao" class="java.sql.Timestamp"/>
+	<field name="celular" class="java.lang.String"/>
+	<field name="fixo" class="java.lang.String"/>
+	<field name="comunicante" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="relato" class="java.lang.String"/>
+	<field name="comentario" class="java.lang.String"/>
+	<field name="providencia" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="destinatario" class="java.lang.String"/>
+	<field name="categoria" class="java.lang.String"/>
+	<field name="ocorrencia_registro" class="java.lang.String"/>
+	<field name="ocorrencia_paciente" class="java.lang.String"/>
+	<field name="ocorrencia_tipo_ocorrencia" class="java.lang.String"/>
+	<field name="ocorrencia_data" class="java.sql.Timestamp"/>
+	<field name="ocorrencia_id" class="java.lang.Integer"/>
+	<field name="ocorrencia_data_conclusao" class="java.sql.Timestamp"/>
+	<field name="ocorrencia_celular" class="java.lang.String"/>
+	<field name="ocorrencia_fixo" class="java.lang.String"/>
+	<field name="ocorrencia_comunicante" class="java.lang.String"/>
+	<field name="ocorrencia_email" class="java.lang.String"/>
+	<field name="ocorrencia_relato" class="java.lang.String"/>
+	<field name="ocorrencia_comentario" class="java.lang.String"/>
+	<field name="ocorrencia_providencia" class="java.lang.String"/>
+	<field name="ocorrencia_status" class="java.lang.String"/>
+	<field name="ocorrencia_destinatario" class="java.lang.String"/>
+	<field name="ocorrencia_categoria" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="725" y="0" width="77" height="102" uuid="bc4d9a2e-e30f-4998-a57b-827febcaf328"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="b5d76a38-c29a-4013-b9cd-8f866b38f4e6"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="7c2e2d2f-c42e-41cb-bc3d-1874f52bddde"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="8400a5e9-e93a-48a1-841a-5547cf8e8e64"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="66914567-0bbb-4a7e-bb6d-2b567c06d1cf"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="f677d4da-74de-42e8-a9b1-a8c32117aa09"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="24" height="18" forecolor="#000000" uuid="37ef8e54-bc82-4603-b859-4698c33b8eff"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="24" y="0" width="24" height="18" forecolor="#000000" uuid="35a0d110-0ac8-4c73-9efc-b971d4b3c126"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="48" y="0" width="24" height="18" forecolor="#000000" uuid="99d22e9e-89df-427f-89d0-7148b85efde2"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tipo_ocorrencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="72" y="0" width="24" height="18" forecolor="#000000" uuid="d1f90cbf-0202-438c-8cf1-ede39cc0b277"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="96" y="0" width="24" height="18" forecolor="#000000" uuid="bd7f2b38-e540-40a1-890f-f6abf1f7de78"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="120" y="0" width="24" height="18" forecolor="#000000" uuid="47d1a8d7-968e-4067-ba3d-bd04a3a1c5c1"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[data_conclusao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="144" y="0" width="24" height="18" forecolor="#000000" uuid="9e4db3ba-c110-4611-8dbd-497ccc42f08d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="168" y="0" width="24" height="18" forecolor="#000000" uuid="8202125e-3976-487e-b27f-d50309467f05"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[fixo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="192" y="0" width="24" height="18" forecolor="#000000" uuid="2195e003-bbee-4fe4-a3c1-0cafd880f630"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[comunicante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="216" y="0" width="24" height="18" forecolor="#000000" uuid="f3c86faf-d8ae-4903-81f7-2b44b1e38824"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="240" y="0" width="24" height="18" forecolor="#000000" uuid="882e3e0f-a7b1-4df0-9020-4cb66fbc2bf3"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[relato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="264" y="0" width="24" height="18" forecolor="#000000" uuid="38b8b13c-b139-4e94-aae9-79df5010ffff"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[comentario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="288" y="0" width="24" height="18" forecolor="#000000" uuid="151abaea-973e-45b4-8c96-0b739276d087"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[providencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="312" y="0" width="24" height="18" forecolor="#000000" uuid="df218a75-5975-4a5f-a3bc-820dc6d78c4f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="336" y="0" width="24" height="18" forecolor="#000000" uuid="e8320b2d-a55a-4bd6-af5f-022baf4f79ad"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[destinatario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="360" y="0" width="24" height="18" forecolor="#000000" uuid="3fa2b01f-3578-4332-981a-287d0af4e7b8"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="384" y="0" width="24" height="18" forecolor="#000000" uuid="5f75253a-2216-468c-a879-be2879ae107f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="408" y="0" width="24" height="18" forecolor="#000000" uuid="5d2a4006-9ea5-4f88-8717-c2eecb0b4c91"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="432" y="0" width="24" height="18" forecolor="#000000" uuid="5f609e75-80d0-434f-b512-def9ec6a6288"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_tipo_ocorrencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="0" width="24" height="18" forecolor="#000000" uuid="74a29449-81b7-4048-8dc2-d944459fef46"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="480" y="0" width="24" height="18" forecolor="#000000" uuid="768f3434-c34e-4f3d-bac2-7897a962e1ef"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="504" y="0" width="24" height="18" forecolor="#000000" uuid="1d483b76-ca90-4a5c-88c0-e5f4eb4e7d32"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_data_conclusao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="528" y="0" width="24" height="18" forecolor="#000000" uuid="142c1f32-987d-4000-8827-8388c1660337"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="552" y="0" width="24" height="18" forecolor="#000000" uuid="995c9593-c22b-41b9-9cf6-d8637f26bdcf"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_fixo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="576" y="0" width="24" height="18" forecolor="#000000" uuid="c3bc7fd7-f4ee-4649-b602-7e9a25f5245c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_comunicante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="600" y="0" width="24" height="18" forecolor="#000000" uuid="6db59c91-17eb-4ee7-bb2f-3b70e1655c75"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="624" y="0" width="24" height="18" forecolor="#000000" uuid="d234f2c6-06d8-4cd1-bda8-cc8070932b89"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_relato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="648" y="0" width="24" height="18" forecolor="#000000" uuid="a060fbb3-8c1a-4763-8d5b-458744eda223"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_comentario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="672" y="0" width="24" height="18" forecolor="#000000" uuid="c1e1a8a1-b10b-4a90-a1cf-2ed8097d8fee"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_providencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="696" y="0" width="24" height="18" forecolor="#000000" uuid="c99340cf-0990-419c-9d2c-69fe7c985a19"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="720" y="0" width="24" height="18" forecolor="#000000" uuid="a1da1acf-0ab0-4fd0-af0b-ca85cdd6926c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_destinatario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="744" y="0" width="24" height="18" forecolor="#000000" uuid="7a584835-4f10-4a3f-8e71-0408b9dbcb1f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ocorrencia_categoria]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="cdab2799-2b08-413b-adf9-81cf0923f78d"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="24" height="18" uuid="8ec6b1e8-ed89-4177-a0ac-9f75b5c6e12c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{registro}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="24" y="0" width="24" height="18" uuid="06f3c6e0-5020-4e73-a63d-6222ac6ea03c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{paciente}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="48" y="0" width="24" height="18" uuid="73f68285-f2f9-4f0e-9d65-3d16c52a9872"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo_ocorrencia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="72" y="0" width="24" height="18" uuid="ce2a6430-d4da-4792-8f87-2dcaf240fda2"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="96" y="0" width="24" height="18" uuid="d085c7ba-e79b-49f8-b9e7-1d402229ff18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="120" y="0" width="24" height="18" uuid="9aaa0fc0-7ab7-4e79-b227-257909caad06"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{data_conclusao}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="144" y="0" width="24" height="18" uuid="96b29a9b-aeb0-430b-978b-df6e42890953"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{celular}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="168" y="0" width="24" height="18" uuid="67f07955-0edf-4469-b695-f0426e053890"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fixo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="192" y="0" width="24" height="18" uuid="b7140ce1-f2e4-4527-988f-043a910c535c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{comunicante}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="216" y="0" width="24" height="18" uuid="8524fa47-287f-4194-b791-3a8d3ad7f855"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="240" y="0" width="24" height="18" uuid="7757a37a-e361-4bfa-b9aa-d53210cf7237"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{relato}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="264" y="0" width="24" height="18" uuid="5ad4d568-939c-4745-a064-8bf140b14e30"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{comentario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="288" y="0" width="24" height="18" uuid="dfd3fe78-250f-4554-8055-2a5989f0bac8"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{providencia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="312" y="0" width="24" height="18" uuid="2c41651d-a188-4a8d-8ac7-b11db34390db"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="336" y="0" width="24" height="18" uuid="7847b6b9-debd-4154-933e-37339fc8d99a"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{destinatario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="360" y="0" width="24" height="18" uuid="51e2a6c9-1946-48ff-b451-ed5ae6f3b417"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="384" y="0" width="24" height="18" uuid="dd1e9a8e-8464-43dd-a270-7d82f819b420"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_registro}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="408" y="0" width="24" height="18" uuid="8c1923e9-745a-4ba8-a8d0-3a4f8a51a0d7"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_paciente}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="432" y="0" width="24" height="18" uuid="e7285083-952a-4819-9581-a399f067002b"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_tipo_ocorrencia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="456" y="0" width="24" height="18" uuid="778e2fde-be12-44f8-bbb6-126137681ccf"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_data}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="480" y="0" width="24" height="18" uuid="34d3f7c4-a44f-437b-8c2b-395f85f4cbba"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_id}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="504" y="0" width="24" height="18" uuid="497cabb9-96de-4a81-8494-2092a79f1791"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_data_conclusao}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="528" y="0" width="24" height="18" uuid="42d36176-4726-4f52-bad9-69ae72310dbc"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_celular}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="552" y="0" width="24" height="18" uuid="120e7d3b-0451-41ff-8374-3c747247eeed"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_fixo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="576" y="0" width="24" height="18" uuid="acfd3b9e-15f8-4729-b2b4-68e981ad5125"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_comunicante}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="600" y="0" width="24" height="18" uuid="890bf0c5-a0d3-42e2-879a-15876a03a2fe"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_email}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="624" y="0" width="24" height="18" uuid="930ec498-dc3a-4bd7-bdd3-1837afffb3c1"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_relato}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="648" y="0" width="24" height="18" uuid="10818946-07db-4ffe-b309-5137233b2211"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_comentario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="672" y="0" width="24" height="18" uuid="206b1cf4-1e82-4e0c-aede-83058abdfdd7"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_providencia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="696" y="0" width="24" height="18" uuid="a31721e8-9bf9-4072-b7f9-73acd724da18"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_status}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="720" y="0" width="24" height="18" uuid="3c88e7aa-2326-4a08-a330-bf2748080846"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_destinatario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="744" y="0" width="24" height="18" uuid="86e86e55-9b20-4f39-ac41-a2e243920496"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ocorrencia_categoria}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="007f6167-4be7-41a2-abbc-22f4d6b5f782"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="e93b245e-b960-42e6-a2e0-c8de0921d050"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="d6dd5ce8-abd6-42a5-a382-2bdf648eed2e"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="f1f34f3a-9db2-4dd1-9c0f-22f8e81ce1d9"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="6753961b-a9ea-4f35-b211-b691d61074c9"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
